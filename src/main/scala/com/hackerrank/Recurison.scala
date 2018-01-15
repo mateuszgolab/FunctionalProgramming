@@ -1,23 +1,24 @@
 package com.hackerrank
 
-import com.hackerrank.Introduction.factorial
+import com.hackerrank.Common.binomialCoefficients
 
 object Recurison {
 
-  def binomialCoefficients(n : Int, k : Int): BigInt = factorial(n)/(factorial(k)*factorial(n-k))
-
-  def pascalsTriangle(n : Int): Unit = {
+  def pascalsTriangle(n: Int): Unit = {
 
     for (i <- 0 until n) {
-        for( j <- 0 to i) {
-          print(binomialCoefficients(i,j))
-          if(j < i){
-            print(" ")
-          }
+      for (j <- 0 to i) {
+        print(binomialCoefficients(i, j))
+        if (j < i) {
+          print(" ")
         }
-      if(i < n-1) {
+      }
+      if (i < n - 1) {
         println()
       }
     }
   }
+
+  def stringMingling(p: String, q: String): String = p.toCharArray zip q.toCharArray map (e => e._1.toString concat e._2.toString) mkString
+
 }

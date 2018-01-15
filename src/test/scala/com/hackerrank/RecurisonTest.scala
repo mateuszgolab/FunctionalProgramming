@@ -10,5 +10,13 @@ class RecurisonTest extends FunSuite {
 
   }
 
+  test("String Mingling") {
+
+    val result = Recurison.stringMingling("hacker", "ranker")
+
+    assert(result === "hraacnkkeerr")
+
+  }
+
 
 }

@@ -1,6 +1,6 @@
 package com.hackerrank
 
-import scala.math.BigInt
+import com.hackerrank.Common.factorial
 
 object Introduction {
 
@@ -19,11 +19,6 @@ object Introduction {
   def listLength(arr:List[Int]):Int = arr.size
 
   def updateList(arr:List[Int]):List[Int] = arr.map(e => Math.abs(e))
-
-  def factorial(n : BigInt) : BigInt = {
-    if(n < 2) 1
-    else n * factorial(n-1)
-  }
 
   def evaluatingEx(x : Double) : Double = List.range(0, 10).map(i => Math.pow(x,i)/factorial(i).doubleValue()).sum
 }
