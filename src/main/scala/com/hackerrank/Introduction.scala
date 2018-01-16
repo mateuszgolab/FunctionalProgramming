@@ -21,4 +21,11 @@ object Introduction {
   def updateList(arr:List[Int]):List[Int] = arr.map(e => Math.abs(e))
 
   def evaluatingEx(x : Double) : Double = List.range(0, 10).map(i => Math.pow(x,i)/factorial(i).doubleValue()).sum
+
+  def isFunction(x : List[Int], y : List[Int]) : String = {
+
+    if ((x zip y).distinct.size == x.distinct.size) "YES"
+    else "NO"
+  }
+
 }

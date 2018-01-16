@@ -115,4 +115,37 @@ class IntroductionTest extends FunSuite with Matchers {
 
   }
 
+  test("Functions or not ?") {
+
+    val x = List(1,2,4)
+    val y = List(1,2,3)
+
+    val result = Introduction.isFunction(x,y)
+
+    assert(result === "YES")
+
+  }
+
+  test("Functions or not ? 2") {
+
+    val x = List(1,1,3)
+    val y = List(1,2,3)
+
+    val result = Introduction.isFunction(x,y)
+
+    assert(result === "NO")
+
+  }
+
+  test("Functions or not ? 3") {
+
+    val x = List(1,2,1)
+    val y = List(1,2,1)
+
+    val result = Introduction.isFunction(x,y)
+
+    assert(result === "YES")
+
+  }
+
 }
