@@ -58,4 +58,14 @@ class RecurisonTest extends FunSuite {
 
   }
 
+  test("Number Of Ways") {
+
+    assert(numberOfWays(10,2) == 1)
+    assert(numberOfWays(100,2) == 3)
+    assert(numberOfWays(100,3) == 1)
+    assert(numberOfWays(1000,3) == 1)
+
+
+  }
+
 }

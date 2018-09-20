@@ -58,4 +58,16 @@ object Recurison {
 
   def stringReductions(s : String) : String = s.toCharArray.distinct mkString ""
 
+  def numberOfWays(X:Int,N:Int):Int = {
+
+    def rec(X:Int, N:Int, I:Int, limit : Int) : Int = {
+      if(X == 0) 1
+      else if(X < 0) 0
+      else (I to limit).map(i => rec(X - Math.pow(i, N).toInt, N, i + 1, limit)).sum
+
+    }
+
+    (1 to Math.sqrt(X).toInt).map(i => rec(X - Math.pow(i, N).toInt, N, i + 1, Math.sqrt(X).toInt)).sum
+  }
+
 }
