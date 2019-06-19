@@ -40,13 +40,13 @@ object Recurison {
 
   }
 
-// TODO : try with zip
+  // TODO : try with zip
   def prefixCompression(x: String, y: String): List[String] = {
 
     @tailrec
     def compression(x: List[Char], y: List[Char], prefix: mutable.StringBuilder): List[String] = x match {
       case head :: tail =>
-        if(y.isEmpty) List(prefix.toString(), x mkString "", "")
+        if (y.isEmpty) List(prefix.toString(), x mkString "", "")
         else if (head == y.head) compression(tail, y.tail, prefix.append(head))
         else List(prefix.toString(), x mkString "", y mkString "")
       case _ => List(prefix.toString(), "", "")
@@ -56,18 +56,44 @@ object Recurison {
 
   }
 
-  def stringReductions(s : String) : String = s.toCharArray.distinct mkString ""
+  def stringReductions(s: String): String = s.toCharArray.distinct mkString ""
 
-  def numberOfWays(X:Int,N:Int):Int = {
+  def numberOfWays(X: Int, N: Int): Int = {
 
-    def rec(X:Int, N:Int, I:Int, limit : Int) : Int = {
-      if(X == 0) 1
-      else if(X < 0) 0
+    def rec(X: Int, N: Int, I: Int, limit: Int): Int = {
+      if (X == 0) 1
+      else if (X < 0) 0
       else (I to limit).map(i => rec(X - Math.pow(i, N).toInt, N, i + 1, limit)).sum
 
     }
 
     (1 to Math.sqrt(X).toInt).map(i => rec(X - Math.pow(i, N).toInt, N, i + 1, Math.sqrt(X).toInt)).sum
   }
+
+  def sequenceFullOfColors(colors: String): String = {
+
+    @tailrec
+    def seqAccm(colors: List[Char], red: Int, green: Int, yellow: Int, blue: Int): Boolean = {
+
+      if (colors.isEmpty) red == green && yellow == blue
+      else if (Math.abs(red - green) > 1 || Math.abs(yellow - blue) > 1) false
+      else {
+        colors.head match {
+          case 'R' => seqAccm(colors.tail, red + 1, green, yellow, blue)
+          case 'G' => seqAccm(colors.tail, red, green + 1, yellow, blue)
+          case 'Y' => seqAccm(colors.tail, red, green, yellow + 1, blue)
+          case 'B' => seqAccm(colors.tail, red, green, yellow, blue + 1)
+        }
+      }
+    }
+
+    if (seqAccm(colors.toList, 0, 0, 0, 0)) {
+      "True"
+    } else {
+      "False"
+    }
+
+  }
+
 
 }

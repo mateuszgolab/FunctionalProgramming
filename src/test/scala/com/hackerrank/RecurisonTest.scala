@@ -68,4 +68,16 @@ class RecurisonTest extends FunSuite {
 
   }
 
+  test("Sequence full of colors") {
+
+    assert(sequenceFullOfColors("RGGR") === "True")
+    assert(sequenceFullOfColors("RYBG") === "True")
+    assert(sequenceFullOfColors("RYRB") === "False")
+    assert(sequenceFullOfColors("RYRBGG") === "False")
+    assert(sequenceFullOfColors("YGYGRBRB") === "False")
+    assert(sequenceFullOfColors("RYBG" * 100000) === "True")
+
+
+  }
+
 }
