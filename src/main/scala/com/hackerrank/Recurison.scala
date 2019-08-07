@@ -95,5 +95,26 @@ object Recurison {
 
   }
 
+  def filterElements(elements: Seq[Int], k: Int): Seq[Int] = {
+
+    val map: mutable.Map[Int, Int] = mutable.HashMap.empty
+
+    for (e <- elements) {
+      val value = map.getOrElse(e, 0) + 1
+      map.put(e, value)
+    }
+
+    elements.distinct.filter(e => map.getOrElse(e, 0) >= k)
+
+  }
+
+  def filterElementsNoMutable(elements: Seq[Int], k: Int): Seq[Int] = {
+
+    val counts = elements.groupBy(identity).mapValues(_.length)
+
+    elements.distinct.filter(e => counts(e) >= k)
+
+  }
+
 
 }

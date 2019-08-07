@@ -3,9 +3,12 @@ package com.hackerrank
 import com.hackerrank.Recurison._
 import org.scalatest.FunSuite
 
+import scala.util.Random
 
 
 class RecurisonTest extends FunSuite {
+
+  val random = new Random()
 
   test("Pascal's Triangle 4") {
 
@@ -60,10 +63,10 @@ class RecurisonTest extends FunSuite {
 
   test("Number Of Ways") {
 
-    assert(numberOfWays(10,2) == 1)
-    assert(numberOfWays(100,2) == 3)
-    assert(numberOfWays(100,3) == 1)
-    assert(numberOfWays(1000,3) == 1)
+    assert(numberOfWays(10, 2) == 1)
+    assert(numberOfWays(100, 2) == 3)
+    assert(numberOfWays(100, 3) == 1)
+    assert(numberOfWays(1000, 3) == 1)
 
 
   }
@@ -77,6 +80,28 @@ class RecurisonTest extends FunSuite {
     assert(sequenceFullOfColors("YGYGRBRB") === "False")
     assert(sequenceFullOfColors("RYBG" * 100000) === "True")
 
+  }
+
+  test("Filter elements") {
+
+    assert(filterElements(Seq(4, 5, 2, 5, 4, 3, 1, 3, 4), 2) === Seq(4, 5, 3))
+    assert(filterElements(Seq(4, 5, 2, 5, 4, 3, 1, 3, 4), 4) === Seq.empty[Int])
+    assert(filterElements(Seq(5, 4, 3, 2, 1, 1, 2, 3, 4, 5), 2) === Seq(5, 4, 3, 2, 1))
+
+
+    filterElements(Seq.fill(10000)(random.nextInt()), random.nextInt())
+
+
+  }
+
+  test("Filter elements no mutable") {
+
+    assert(filterElementsNoMutable(Seq(4, 5, 2, 5, 4, 3, 1, 3, 4), 2) === Seq(4, 5, 3))
+    assert(filterElementsNoMutable(Seq(4, 5, 2, 5, 4, 3, 1, 3, 4), 4) === Seq.empty[Int])
+    assert(filterElementsNoMutable(Seq(5, 4, 3, 2, 1, 1, 2, 3, 4, 5), 2) === Seq(5, 4, 3, 2, 1))
+
+
+    filterElementsNoMutable(Seq.fill(10000)(random.nextInt()), random.nextInt())
 
   }
 
