@@ -16,3 +16,4 @@ project/plugins/project/
 .gitignore
 .idea/workspace.xml
 project/project/
+/.idea/
