@@ -25,9 +25,33 @@ object Arrays {
     sums.max
   }
 
-
   def rotLeft(a: Array[Int], d: Int): Array[Int] = (for (i <- d until d + a.length) yield a(i % a.length)).toArray
 
+  def minimumBribes(q: Array[Int]): String = {
+
+    def swap(ar: Array[Int], index1: Int, index2: Int): Unit = {
+      val tmp = ar(index1)
+      ar(index1) = ar(index2)
+      ar(index2) = tmp
+    }
+
+    val check = q.indices.find(i => q(i) - 1 - i >= 3)
+    if (check.isDefined) return "Too chaotic"
+
+    var swapCounter = 0
+    q.indices.reverse.foreach(i => {
+      if (i > 0 && q(i - 1) == i + 1) {
+        swap(q, i - 1, i)
+        swapCounter = swapCounter + 1
+      } else if (i > 1 && q(i - 2) == i + 1) {
+        swap(q, i - 2, i - 1)
+        swap(q, i - 1, i)
+        swapCounter = swapCounter + 2
+      }
+    })
+
+    swapCounter.toString
+  }
 
 }
 
